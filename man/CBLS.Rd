@@ -20,9 +20,9 @@ CBLS(data = NULL, xcol = 1, ycol = 2, var.x = NULL, var.y = NULL,
   \item{ratio.var}{ a numeric value for \ifelse{html}{\out{&lambda;}}{\eqn{\lambda}{lambda}}, the ratio of the measurement error variances (Y over X) if known.}
   \item{conf.level}{ a numeric value for the confidence level (expressed between 0 and 1).}
   \item{pred.level}{ a numeric value for the predictive level (expressed between 0 and 1).}
-  \item{npoints}{ a numeric variable for the number of points to smooth the hyperbolic curves.}
-  \item{qx}{ a numeric value to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
-  \item{qy}{ a numeric value to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
+  \item{npoints}{ an integer (at least 10) for the number of points to smooth the hyperbolic curves.}
+  \item{qx}{ an integer to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
+  \item{qy}{ an integer to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
   \item{xpred}{ a numeric vector for customized predictions at given M values.}
 }
 \details{
@@ -39,7 +39,7 @@ A CBLS class object, a list including the following elements:
   \item{Di}{ a vector with the differences (Y-X) measurements.}
   \item{nxi}{ a vector with the number of X replicates per sample (patient).}
   \item{nyi}{ a vector with the number of Y replicates per sample (patient).}
-  \item{variances_x}{ a vector with the variances calculated on the Y replicates per sample (patient).}
+  \item{variances_x}{ a vector with the variances calculated on the X replicates per sample (patient).}
   \item{variances_y}{ a vector with the variances calculated on the Y replicates per sample (patient).}
   \item{Rho.MD}{ a table with the value of \ifelse{html}{\out{&rho;MD}}{\eqn{\rho_{MD}}{rhoXY}} (the correlation between the measurement errors of the means and the differences) and its confidence interval.}
   \item{Ellipse.CBLS}{ a two columns matrix with the coordinates of the joint confidence interval (confidence region, ellipse) for the parameters (\ifelse{html}{\out{&beta;}}{\eqn{\beta}{beta}}, \ifelse{html}{\out{&alpha;}}{\eqn{\alpha}{alpha}}).}

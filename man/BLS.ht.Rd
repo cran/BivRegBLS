@@ -24,9 +24,9 @@ BLS.ht(data = NULL, xcol = NULL, ycol = NULL, var.x.col = NULL, var.y.col = NULL
   \item{df.var.y.col}{ a numeric or character variable to specify the column with the degrees of freedom of the heteroscedastic variances in Y.}
   \item{conf.level}{ a numeric value for the confidence level (expressed between 0 and 1).}
   \item{pred.level}{ a numeric value for the predictive level (expressed between 0 and 1).}
-  \item{npoints}{ a numeric variable for the number of points to smooth the hyperbolic curves.}
-  \item{qx}{ a numeric value to predict the mean of qy Y future values from the mean of qxX values (generalized interval).}
-  \item{qy}{ a numeric value to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
+  \item{npoints}{ an integer (at least 10) for the number of points to smooth the hyperbolic curves.}
+  \item{qx}{ an integer to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
+  \item{qy}{ an integer value to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
   \item{xpred}{ a numeric vector for customized predictions at given X values.}
   \item{tol}{ a numeric variable to change the tolerance for the BLS to converge.}
 }

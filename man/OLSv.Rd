@@ -13,8 +13,8 @@ OLSv(data = NULL, xcol = 1, ycol = 2, conf.level = 0.95, pred.level = 0.95,
   \item{ycol}{ a numeric vector to specify the Y column(s) or a character vector with the column names.}
   \item{conf.level}{ a numeric value for the confidence level (expressed between 0 and 1).}
   \item{pred.level}{ a numeric value for the predictive level (expressed between 0 and 1).}
-  \item{npoints}{ a numeric variable for the number of points to smooth the hyperbolic curves.}
-  \item{q}{ a numeric value to predict the mean of q future values (generalized interval).}
+  \item{npoints}{ an integer (at least 10) for the number of points to smooth the hyperbolic curves.}
+  \item{q}{ an integer to predict the mean of q future values (generalized interval).}
   \item{xpred}{ a numeric vector for customized predictions at given X values.}
 }
 \details{

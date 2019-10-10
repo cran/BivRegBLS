@@ -18,7 +18,7 @@ raw.plot(data.plot = NULL, xname = "X", yname = "Y", graph = "XY.means",
   \item{\dots}{ the common arguments from 'plot' or 'par' that may be used additionaly, such as xlim, ylim, xlab, ylab.}
 }
 \details{
-The data.plot argument is mandatory. The labels of the X and Y axes are built by default with \code{xname} and \code{yname}, and with the type of graph \code{graph}. The arguments \code{col.ID} and \code{pch.ID} are useful if the argument \code{IDcol} was used in the function \code{\link{desc.stat}}. \code{col.ID} and \code{pch.ID} are recycled if shorter than the number of IDs, i.e. if 3 colors are specified as col.ID=c(1,2,3) while there are 7 IDs, then the colors will be used as c(1,2,3,1,2,3,1).
+The data.plot argument is mandatory. The labels of the X and Y axes are built by default with \code{xname} and \code{yname}, and with the type of \code{graph}. The arguments \code{col.ID} and \code{pch.ID} are useful if the argument \code{IDcol} was used in the function \code{\link{desc.stat}}. \code{col.ID} and \code{pch.ID} are recycled if shorter than the number of IDs, i.e. if 3 colors are specified as col.ID=c(1,2,3) while there are 7 IDs, then the colors will be used as c(1,2,3,1,2,3,1).
 \cr With the argument \code{graph}, the option \code{XY.means} plots the mean measures in a (X,Y) plot, \code{XY.points} plots all the X (Y) replicated data centered on the means of Y (X), \code{XY.bar.range} plots the error bars from the minimum to the maximum (the range) of the replicates, \code{XY.bar.SEM} plots the error bars with the standard errors of the means, \code{XY.bar.SD} plots the error bars with the standard deviations, \code{MD.means} plots the mean measures in a (M,D) plot.
 }
 \value{

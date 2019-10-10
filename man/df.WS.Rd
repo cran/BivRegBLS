@@ -1,10 +1,10 @@
 \name{df.WS}
 \alias{df.WS}
 \title{
-Degrees of freedom by Welch-Satterwaithe
+Degrees of freedom by Welch-Satterthwaite
 }
 \description{
-Calculate the degrees of freedom from the Welch-Satterwaithe equation for a linear combination of sample variances.
+Calculate the degrees of freedom from the Welch-Satterthwaite equation for a linear combination of sample variances.
 }
 \usage{
 df.WS(variances = NULL, k = rep(1, length(variances)), dfs = NULL)
@@ -15,7 +15,7 @@ df.WS(variances = NULL, k = rep(1, length(variances)), dfs = NULL)
   \item{dfs}{ a numeric vector with the degrees of freedom of each variance.}
 }
 \details{
-The \code{variances} argument is mandatory while other arguments are optional. This function is automatically called by other functions from BivRegBLS package.
+The \code{variances} argument is mandatory while other arguments are optional.
 }
 \value{
 A numeric variable with the degrees of freedom of the linear combination of the variances.

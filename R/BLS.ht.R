@@ -74,11 +74,11 @@ if(sum(is.na(nyi) | nyi < 1) > 0) stop("No missing values are allowed in nyi, an
 
 if(is.null(var.x.col) & is.null(var.x.formula)) {varX=variances_x/nxi; df.var.x=nxi-1}
 if(!is.null(var.x.col) & is.null(var.x.formula)) {variances_x=data[rr,var.x.col]; varX=variances_x/nxi; df.var.x=data[rr,df.var.x.col]}
-if(is.null(var.x.col) & !is.null(var.x.formula)) {variances_x=eval(parse(text=sub("X","x",var.x.formula))); varX=variances_x/nxi; df.var.x=rep(n-2,n)}
+if(is.null(var.x.col) & !is.null(var.x.formula)) {variances_x=eval(parse(text=gsub("X","x",var.x.formula))); varX=variances_x/nxi; df.var.x=rep(n-2,n)}
 
 if(is.null(var.y.col) & is.null(var.y.formula)) {varY=variances_y/nyi; df.var.y=nyi-1}
 if(!is.null(var.y.col) & is.null(var.y.formula)) {variances_y=data[rr,var.y.col]; varY=variances_y/nyi; df.var.y=data[rr,df.var.y.col]}
-if(is.null(var.y.col) & !is.null(var.y.formula)) {variances_y=eval(parse(text=sub("Y","y",var.y.formula))); varY=variances_y/nyi; df.var.y=rep(n-2,n)}
+if(is.null(var.y.col) & !is.null(var.y.formula)) {variances_y=eval(parse(text=gsub("Y","y",var.y.formula))); varY=variances_y/nyi; df.var.y=rep(n-2,n)}
 
 if(sum(is.na(df.var.x)) > 0) stop("No missing values are allowed in the degrees of freedom")
 if(sum(is.na(df.var.y)) > 0) stop("No missing values are allowed in the degrees of freedom")
@@ -193,7 +193,7 @@ data.pred[,CB2]=xx.pred+sqrt(qf(conf.level,2,n-2)*Hotelling_correction)*sqrt(var
 
 if(is.null(var.x.col) & !is.null(var.x.formula))
 {
-var.x.formula=sub("X","xx",var.x.formula)
+var.x.formula=gsub("X","xx",var.x.formula)
 var_x_single=eval(parse(text=var.x.formula))
 df.var.x=rep(n-2,nrow(data.pred))
 } else {
@@ -201,7 +201,7 @@ var_x_single=varX*nxi
 }
 if(is.null(var.y.col) & !is.null(var.y.formula))
 {
-var.y.formula=sub("Y","xx.pred",var.y.formula)
+var.y.formula=gsub("Y","xx.pred",var.y.formula)
 var_y_single=eval(parse(text=var.y.formula))
 df.var.y=rep(n-2,nrow(data.pred))
 } else {

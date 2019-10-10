@@ -20,9 +20,9 @@ BLS(data = NULL, xcol = 1, ycol = 2, var.x = NULL, var.y = NULL,
   \item{ratio.var}{ a numeric value for \ifelse{html}{\out{&lambda;}}{\eqn{\lambda}{lambda}}, the ratio of the measurement error variances (Y over X) if known.}
   \item{conf.level}{ a numeric value for the confidence level (expressed between 0 and 1).}
   \item{pred.level}{ a numeric value for the predictive level (expressed between 0 and 1).}
-  \item{npoints}{ a numeric variable for the number of points to smooth the hyperbolic curves.}
-  \item{qx}{ a numeric value to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
-  \item{qy}{ a numeric value to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
+  \item{npoints}{ an integer (at least 10) for the number of points to smooth the hyperbolic curves.}
+  \item{qx}{ an integer to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
+  \item{qy}{ an integer to predict the mean of qy Y future values from the mean of qx X values (generalized interval).}
   \item{xpred}{ a numeric vector for customized predictions at given X values.}
 }
 \details{
@@ -52,7 +52,7 @@ Francq BG, Govaerts BB. How to regress and predict in a Bland-Altman plot? Revie
 \cr Francq BG, Govaerts BB. Hyperbolic confidence bands of errors-in-variables regression lines applied to method comparison studies. Journal de la Societe Francaise de Statistique 2014; 155(1):23-45.}
 \author{Bernard G FRANCQ}
 \seealso{
-\code{\link{CBLS}}
+\code{\link{CBLS}}, \code{\link{BLS.fit}}, \code{\link{BLS.ht}}
 }
 \examples{
 library(BivRegBLS)

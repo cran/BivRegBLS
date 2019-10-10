@@ -13,8 +13,8 @@ FullCIs.XY(data = NULL, xcol = 1, ycol = 2,
   \item{xcol}{ a numeric vector to specify the X column(s) or a character vector with the column names.}
   \item{ycol}{ a numeric vector to specify the Y column(s) or a character vector with the column names.}
   \item{conf.level}{ a numeric value for the confidence level (expressed between 0 and 1).}
-  \item{npoints}{ a numeric variable for the number of points to smooth the hyperbolic curves.}
-  \item{nlambdas}{a numeric variable for the number of intermediate DR and BLS regressions (between the OLSv and OLSh).}
+  \item{npoints}{ an integer (at least 10) for the number of points to smooth the hyperbolic curves.}
+  \item{nlambdas}{an integer for the number of intermediate DR and BLS regressions (between the OLSv and OLSh).}
 }
 \details{
 The data argument is mandatory. This function is especially useful for unreplicated data with unknown \ifelse{html}{\out{&lambda;}}{\eqn{\lambda}{lambda}} (the ratio of the measurement error variances), as it calculates all the potential solutions from OLSv to OLSh. The different estimated regression lines are provided with the different confidence intervals.}

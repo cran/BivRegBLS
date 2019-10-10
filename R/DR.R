@@ -46,9 +46,9 @@ intercept_DR=ymean-xmean*slope_DR
 tetas=atan(slope_DR/sqrt(lambda))
 alpha=1-conf.level
 arg_asin=2*qt(1-alpha/2,n-2)/sqrt(n-2)*sqrt((lambda*(Syy*Sxx-Sxy^2))/((Syy-lambda*Sxx)^2+4*lambda*Sxy^2))
-if(arg_asin >= -1 | arg_asin <= 1) phi=asin(arg_asin)/2
-if(arg_asin >= -1 | arg_asin <= 1) CI_slope_DR_exact_1=sqrt(lambda)*tan(tetas-phi) else CI_slope_DR_exact_1=NA
-if(arg_asin >= -1 | arg_asin <= 1) CI_slope_DR_exact_2=sqrt(lambda)*tan(tetas+phi) else CI_slope_DR_exact_2=NA
+if(arg_asin >= -1 & arg_asin <= 1) phi=asin(arg_asin)/2
+if(arg_asin >= -1 & arg_asin <= 1) CI_slope_DR_exact_1=sqrt(lambda)*tan(tetas-phi) else CI_slope_DR_exact_1=NA
+if(arg_asin >= -1 & arg_asin <= 1) CI_slope_DR_exact_2=sqrt(lambda)*tan(tetas+phi) else CI_slope_DR_exact_2=NA
 
 S_slope_DR=sqrt((Sxx*Syy-Sxy^2)/(n*(Sxy/slope_DR)^2))
 S_intercept_DR=sqrt(xmean^2*S_slope_DR^2+(slope_DR^2*varx/nx+vary/ny)/n)
@@ -60,15 +60,21 @@ pval_slope_DR_approx=(1-pt(abs(slope_DR-1)/S_slope_DR,n-2))*2
 pval_intercept_DR_approx=(1-pt(abs(intercept_DR)/S_intercept_DR,n-2))*2
 
 cov_slope_intercept_DR=-S_slope_DR^2*xmean
+
+if(!is.na(S_intercept_DR))
+{
 cov_matrix_DR=matrix(nrow=2,ncol=2,c(S_slope_DR^2,cov_slope_intercept_DR,cov_slope_intercept_DR,S_intercept_DR^2))
 Hotelling_correction=(2*(n-1))/(n-2)
-if(sum(is.na(cov_matrix_DR))>0) ell_DR=NULL else ell_DR=ellipse(cov_matrix_DR,centre=c(slope_DR,intercept_DR),npoints=1000, t = sqrt(qf(conf.level,2,n-2)*Hotelling_correction))
-
+if(any(is.na(cov_matrix_DR))) ell_DR=NA else ell_DR=ellipse(cov_matrix_DR,centre=c(slope_DR,intercept_DR),npoints=1000, t = sqrt(qf(conf.level,2,n-2)*Hotelling_correction))
 F1=matrix(nrow=1,ncol=2,c(slope_DR-1,intercept_DR))
 F2=solve(cov_matrix_DR)
 F3=t(F1)
 Fell=F1%*%F2%*%F3
 pval_ell_DR=1-pf(F1%*%F2%*%F3/Hotelling_correction,2,n-2)
+} else {
+pval_ell_DR=NA
+ell_DR=NA
+}
 
 rownames=c("Intercept (approximate)","Slope (exact)","Slope (approximate)","Joint")
 name_CI1=paste("Lower ",conf.level*100,"%CI",sep="")
@@ -82,9 +88,10 @@ Table.DR[,name_CI1]=c(CI_intercept_DR_approx_1,CI_slope_DR_exact_1,CI_slope_DR_a
 Table.DR[,name_CI2]=c(CI_intercept_DR_approx_2,CI_slope_DR_exact_2,CI_slope_DR_approx_2,"")
 Table.DR$pvalue=c(pval_intercept_DR_approx,"",pval_slope_DR_approx,pval_ell_DR)
 
-if(sum(is.na(cov_matrix_DR))>0) Table.DR=Table.DR[which(rownames(Table.DR) != "Joint"),]
+if(is.na(S_intercept_DR)) Table.DR=Table.DR[which(rownames(Table.DR) != "Joint"),]
 
 results=list(ell_DR,Table.DR)
 names(results)=c("Ellipse.DR","Estimate.DR")
 return(results)
 }
+

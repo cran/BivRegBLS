@@ -14,7 +14,7 @@ desc.stat(data = NULL, xcol = 1, ycol = 2, IDcol = NULL)
   \item{IDcol}{ a numeric or character variable to specify the column with the different IDs or type of samples.}
 }
 \details{
-If \code{IDcol} is null (as by default), the descriptive statistics are calculated for X and Y. Otherwise, the descriptive statistics are calculated for X and Y for each type of sample (each ID). This information is also used to differentiate the observations on a raw plot when the function \code{\link{raw.plot}} is used.
+If \code{IDcol} is null (as by default), the descriptive statistics are calculated for X and Y. Otherwise, the descriptive statistics are calculated for X and Y for each type of sample (each ID) (with a maximum of 30 different IDs). This information is also used to differentiate the observations on a raw plot when the function \code{\link{raw.plot}} is used. In presence of missing values on X or Y and non-replicates, the rows with missing values are removed. In presence of replicates, the rows with missing values are removed if all Xi or all Yi are missing. 
 \cr The results (\code{Xij}, \code{Yik}, \code{Xi}, \code{Yi}, \code{nxi}, \code{nyi}, \code{variances_x}, \code{variances_y}) are reordered according to the increasing values of Xi (the X mean values).}
 \value{
 A list including the following elements:
